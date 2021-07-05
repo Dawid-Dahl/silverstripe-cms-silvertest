@@ -68,21 +68,21 @@
     </div>
     
     
+    <% with $SiteConfig %>
+    
     <!-- BEGIN COPYRIGHT -->
     <div id="copyright">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    &copy; 2014 One Ring Rentals
+                    &copy; $FooterContent
                     
                     <!-- BEGIN SOCIAL NETWORKS -->
                     <ul class="social-networks">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                         <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
                     </ul>
                     <!-- END SOCIAL NETWORKS -->
                 
@@ -91,6 +91,8 @@
         </div>
     </div>
     <!-- END COPYRIGHT -->
+
+    <% end_with %>
     
 </footer>
 
