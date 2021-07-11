@@ -3,7 +3,7 @@
 namespace SilverStripe\Mynamespace;
 
 use PageController;
-use SilverStripe\View\Requirements;
+use SilverStripe\Dev\Debug;
 
 class HomePageController extends PageController
 {
@@ -22,6 +22,9 @@ class HomePageController extends PageController
     public function GetProperties()
     {
         return Property::get()
-            ->sort("created", "DESC");
+            ->filter([
+                'FeaturedOnHomepage' => true
+            ])
+            ->limit(6);
     }
 }

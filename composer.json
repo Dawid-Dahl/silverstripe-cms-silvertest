@@ -11,7 +11,8 @@
     },
     "require-dev": {
         "sminnee/phpunit": "^5.7",
-        "sminnee/phpunit-mock-objects": "^3.4.5"
+        "sminnee/phpunit-mock-objects": "^3.4.5",
+        "lekoala/silverstripe-debugbar": "^2.0"
     },
     "extra": {
         "resources-dir": "_resources",
