@@ -15,7 +15,13 @@ class HomePageController extends PageController
     public function LatestArticles($count = 3)
     {
         return ArticlePage::get()
-            ->sort('Created', 'DESC')
+            ->sort("Created", "DESC")
             ->limit($count);
+    }
+
+    public function GetProperties()
+    {
+        return Property::get()
+            ->sort("created", "DESC");
     }
 }
