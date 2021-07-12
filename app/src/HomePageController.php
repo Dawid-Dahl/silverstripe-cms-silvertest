@@ -5,6 +5,7 @@ namespace SilverStripe\Mynamespace;
 use PageController;
 use SilverStripe\Dev\Debug;
 
+
 class HomePageController extends PageController
 {
     protected function init()

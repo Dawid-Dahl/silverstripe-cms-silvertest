@@ -38,6 +38,11 @@ class Region extends DataObject
 
     private static $versioned_gridfield_extensions = true;
 
+    public function Link()
+    {
+        return "{$this->RegionsPage->Link}show/{$this->ID}";
+    }
+
     public function getCMSFields()
     {
         $fields = FieldList::create(
