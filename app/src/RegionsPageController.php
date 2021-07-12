@@ -3,21 +3,23 @@
 namespace SilverStripe\Mynamespace;
 
 use PageController;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\Debug;
 
 class RegionsPageController extends PageController
 {
     private static $allowed_actions = [
-        "test",
+        "show",
     ];
 
-    private function cube($arr)
+    public function show(HTTPRequest $request)
     {
-        return array_map(fn ($x) => $x * 10, $arr);
-    }
+        $region = Region::get()->byID($request->param("ID"));
 
-    public function test($request)
-    {
-        return json_encode($this->cube([1, 2, 3]));
+        if (!$region) {
+            return $this->httpError(404, "Region couldn't be found!");
+        }
+
+        return ["Region" => $region];
     }
 }

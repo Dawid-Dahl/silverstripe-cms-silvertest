@@ -40,7 +40,7 @@ class Region extends DataObject
 
     public function Link()
     {
-        return "{$this->RegionsPage->Link}show/{$this->ID}";
+        return "{$this->RegionsPage->Link()}show/{$this->ID}";
     }
 
     public function getCMSFields()
