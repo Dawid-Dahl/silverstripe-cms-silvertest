@@ -11,17 +11,22 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\ArrayLib;
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\DateField;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\TextareaField;
 
 class Property extends DataObject
 {
     private static $db = [
         "Title" => "Varchar",
+        'Description' => 'Text',
         "PricePerNight" => "Currency",
         "Bedrooms" => "Int",
         "Bathrooms" => "Int",
-        "FeaturedOnHomepage" => "Boolean"
+        "FeaturedOnHomepage" => "Boolean",
+        'AvailableStart' => 'Date',
+        'AvailableEnd' => 'Date'
     ];
 
     private static $has_one = [
@@ -75,6 +80,7 @@ class Property extends DataObject
             "Root.Main",
             [
                 TextField::create("Title"),
+                TextareaField::create("Description"),
                 CurrencyField::create("PricePerNight", "Price (per night)"),
                 DropdownField::create("Bedrooms")
                     ->setSource(ArrayLib::valuekey(range(1, 10))),
@@ -84,7 +90,9 @@ class Property extends DataObject
                     ),
                 DropdownField::create("RegionID", "Region")
                     ->setSource(Region::get()),
-                CheckboxField::create("FeaturedOnHomepage", "Feature on homepage")
+                CheckboxField::create("FeaturedOnHomepage", "Feature on homepage"),
+                DateField::create("AvailableStart", "Date available (start)"),
+                DateField::create("AvailableEnd", "Date available (end)"),
             ]
         );
 

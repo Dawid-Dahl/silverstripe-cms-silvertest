@@ -22,19 +22,19 @@
                         <ul class="footer-listings">
                             <li>
                                 <div class="image">
-                                    <a href="properties-detail.html"><img src="http://placehold.it/760x670" alt="" /></a>
+                                    <a href="properties-detail.html"><img src="https://via.placeholder.com/760x670" alt="" /></a>
                                 </div>
                                 <p><a href="properties-detail.html">Rhovanion</a></p>
                             </li>
                             <li>	
                                 <div class="image">
-                                    <a href="properties-detail.html"><img src="http://placehold.it/760x670" alt="" /></a>
+                                    <a href="properties-detail.html"><img src="https://via.placeholder.com/760x670" alt="" /></a>
                                 </div>
                                 <p><a href="properties-detail.html">Eriador</a></p>
                             </li>
                             <li>
                                 <div class="image">
-                                    <a href="properties-detail.html"><img src="http://placehold.it/760x670" alt="" /></a>
+                                    <a href="properties-detail.html"><img src="https://via.placeholder.com/760x670" alt="" /></a>
                                 </div>
                                 <p><a href="properties-detail.html">Bay of Belfalas</a></p>
                             </li>
@@ -44,19 +44,19 @@
                         <ul class="footer-listings">
                             <li>
                                 <div class="image">
-                                    <a href="properties-detail.html"><img src="http://placehold.it/760x670" alt="" /></a>
+                                    <a href="properties-detail.html"><img src="https://via.placeholder.com/760x670" alt="" /></a>
                                 </div>
                                 <p><a href="properties-detail.html">Mordor</a></p>
                             </li>
                             <li>
                                 <div class="image">
-                                    <a href="properties-detail.html"><img src="http://placehold.it/760x670" alt="" /></a>
+                                    <a href="properties-detail.html"><img src="https://via.placeholder.com/760x670" alt="" /></a>
                                 </div>
                                 <p><a href="properties-detail.html">Arnor</a></p>
                             </li>
                             <li>
                                 <div class="image">
-                                    <a href="properties-detail.html"><img src="http://placehold.it/760x670" alt="" /></a>
+                                    <a href="properties-detail.html"><img src="https://via.placeholder.com/760x670" alt="" /></a>
                                 </div>
                                 <p><a href="properties-detail.html">Forlindon</a></p>
                             </li>

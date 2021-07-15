@@ -5,7 +5,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<% base_tag %>
-	$MetaTags
+	$MetaTags(false)
+	<title>Ring Rentals: $Title</title>
 	
 	<!-- Page Title -->
 	

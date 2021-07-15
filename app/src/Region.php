@@ -6,15 +6,16 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\TextAreaField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Versioned\Versioned;
 
 class Region extends DataObject
 {
     private static $db = [
         "Title" => "Varchar",
-        "Description" => "Text",
+        "Description" => "HTMLText",
     ];
 
     private static $has_one = [
@@ -43,11 +44,16 @@ class Region extends DataObject
         return "{$this->RegionsPage->Link()}show/{$this->ID}";
     }
 
+    public function LinkingMode()
+    {
+        return Controller::curr()->getRequest()->param('ID') == $this->ID ? 'current' : 'link';
+    }
+
     public function getCMSFields()
     {
         $fields = FieldList::create(
             TextField::create("Title"),
-            TextAreaField::create("Description"),
+            HTMLEditorField::create("Description"),
             $uploader = UploadField::create("Photo")
         );
 

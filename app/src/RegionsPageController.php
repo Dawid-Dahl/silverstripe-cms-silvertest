@@ -20,6 +20,9 @@ class RegionsPageController extends PageController
             return $this->httpError(404, "Region couldn't be found!");
         }
 
-        return ["Region" => $region];
+        return [
+            "Region" => $region,
+            "Title" => $region->Title
+        ];
     }
 }

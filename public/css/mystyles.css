@@ -4,3 +4,15 @@
 	padding: 0 0 3rem 0;
 	text-align: center;
 }
+
+.regions-page-h1 {
+	margin: 2rem;
+}
+
+.regions-page-p {
+	margin: 2rem;
+}
+
+li .current {
+	color: red !important;
+}
