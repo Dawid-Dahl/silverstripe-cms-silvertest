@@ -11,6 +11,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\ORM\ArrayLib;
+use SilverStripe\ORM\PaginatedList;
 
 class PropertySearchPageController extends PageController
 {
@@ -18,7 +19,7 @@ class PropertySearchPageController extends PageController
 
     public function index(HTTPRequest $request)
     {
-        $properties = Property::get()->limit(6);
+        $properties = Property::get();
 
         if ($search = $request->getVar('Keywords')) {
             $properties = $properties->filter(array(
@@ -62,9 +63,10 @@ class PropertySearchPageController extends PageController
             ]);
         }
 
+        $paginatedProperties = PaginatedList::create($properties, $request)->setPageLength(6);
 
         return [
-            "Results" => $properties
+            "Results" => $paginatedProperties
         ];
     }
 

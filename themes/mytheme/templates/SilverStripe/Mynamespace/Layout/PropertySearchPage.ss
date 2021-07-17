@@ -19,7 +19,7 @@
 
                 <!-- BEGIN ADVANCED SEARCH -->
                 <h2 class="section-title">Search Property</h2>
-                <% if $ActiveFilters %>
+                <%-- <% if $ActiveFilters %>
                 <div class="chzn-container-multi">
                     <ul class="chzn-choices">
                         <% loop $ActiveFilters %>
@@ -27,7 +27,7 @@
                         <% end_loop %>
                     </ul>
                 </div>
-                <% end_if %>
+                <% end_if %> --%>
                 $PropertySearchForm
                 <!-- END ADVANCED SEARCH -->
 
