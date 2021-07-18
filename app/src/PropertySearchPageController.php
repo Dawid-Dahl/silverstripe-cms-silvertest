@@ -2,6 +2,7 @@
 
 namespace SilverStripe\Mynamespace;
 
+use Address;
 use PageController;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\Debug;
@@ -65,9 +66,17 @@ class PropertySearchPageController extends PageController
 
         $paginatedProperties = PaginatedList::create($properties, $request)->setPageLength(6);
 
-        return [
+        $data = [
             "Results" => $paginatedProperties
         ];
+
+        if ($this->request->isAjax()) {
+            return $this
+                ->customise($data)
+                ->renderWith("Includes/PropertySearchResults");
+        }
+
+        return $data;
     }
 
     public function PropertySearchForm()
