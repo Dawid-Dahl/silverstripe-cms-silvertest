@@ -100,7 +100,7 @@
 					$(".main").html(response);
 				})
 				.fail(function (xhr) {
-					console.error("Error: " + xhr.responseText);
+					alert("Error: " + xhr.responseText);
 				});
 		});
 	}

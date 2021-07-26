@@ -23,6 +23,10 @@ class Region extends DataObject
         "RegionsPage" => RegionsPage::class,
     ];
 
+    private static $has_many = [
+        "Articles" => ArticlePage::class,
+    ];
+
     private static $summary_fields = [
         'Photo.CMSThumbnail' => '',
         'Title' => 'Title of region',
@@ -42,6 +46,15 @@ class Region extends DataObject
     public function Link()
     {
         return "{$this->RegionsPage->Link()}show/{$this->ID}";
+    }
+
+    public function ArticlesLink()
+    {
+        $page = ArticleHolder::get()->first();
+
+        if ($page) {
+            return $page->Link("region/" . $this->ID);
+        }
     }
 
     public function LinkingMode()

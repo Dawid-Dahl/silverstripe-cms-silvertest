@@ -11,7 +11,7 @@ use SilverStripe\Assets\Image;
 use SilverStripe\Assets\File;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Dev\Debug;
-
+use SilverStripe\Forms\DropdownField;
 
 class ArticlePage extends Page
 {
@@ -24,6 +24,7 @@ class ArticlePage extends Page
     private static $has_one = [
         "Photo" => Image::class,
         "Brochure" => File::class,
+        "Region" => Region::class
     ];
 
     private static $has_many = [
@@ -56,6 +57,12 @@ class ArticlePage extends Page
             "Article categories",
             $this->Parent()->Categories()->map("ID", "Title"),
         ));
+
+        $fields->addFieldToTab("Root.Main", DropdownField::create(
+            "RegionID",
+            "Region",
+            Region::get()->map("ID", "Title")
+        )->setEmptyString("-- None --"), "Content");
 
         $brochure->setFolderName("travel-brochures")
             ->getValidator()->setAllowedExtensions(["pdf"]);

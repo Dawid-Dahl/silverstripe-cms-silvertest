@@ -20,6 +20,15 @@ class ArticleCategory extends DataObject
         "Articles" => ArticlePage::class,
     ];
 
+    public function Link()
+    {
+        $page = ArticleHolder::get()->first();
+
+        if ($page) {
+            return $page->Link("category/{$this->ID}");
+        }
+    }
+
     public function getCMSFields()
     {
         return Fieldlist::create(

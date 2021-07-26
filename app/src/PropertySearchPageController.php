@@ -2,10 +2,8 @@
 
 namespace SilverStripe\Mynamespace;
 
-use Address;
 use PageController;
 use SilverStripe\Control\HTTPRequest;
-use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
@@ -13,6 +11,11 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\ORM\ArrayLib;
 use SilverStripe\ORM\PaginatedList;
+use SilverStripe\Dev\Debug;
+use Address;
+use SilverStripe\Control\HTTP;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
 
 class PropertySearchPageController extends PageController
 {
@@ -21,8 +24,14 @@ class PropertySearchPageController extends PageController
     public function index(HTTPRequest $request)
     {
         $properties = Property::get();
+        $activeFilters = ArrayList::create();
 
         if ($search = $request->getVar('Keywords')) {
+            $activeFilters->push(ArrayData::create([
+                "Label" => "Keywords: '$search'",
+                "RemoveLink" => HTTP::setGetVar("Keywords", null, null, "&"),
+            ]));
+
             $properties = $properties->filter(array(
                 'Title:PartialMatch' => $search
             ));
@@ -41,24 +50,44 @@ class PropertySearchPageController extends PageController
         }
 
         if ($bedrooms = $request->getVar('Bedrooms')) {
+            $activeFilters->push(ArrayData::create([
+                "Label" => "$bedrooms bedrooms",
+                "RemoveLink" => HTTP::setGetVar("Bedrooms", null, null, "&"),
+            ]));
+
             $properties = $properties->filter([
                 'Bedrooms:GreaterThanOrEqual' => $bedrooms
             ]);
         }
 
         if ($bathrooms = $request->getVar('Bathrooms')) {
+            $activeFilters->push(ArrayData::create([
+                "Label" => "$bathrooms bathroom",
+                "RemoveLink" => HTTP::setGetVar("Bathrooms", null, null, "&"),
+            ]));
+
             $properties = $properties->filter([
                 'Bathrooms:GreaterThanOrEqual' => $bathrooms
             ]);
         }
 
         if ($minPrice = $request->getVar('MinPrice')) {
+            $activeFilters->push(ArrayData::create([
+                "Label" => "Min. $$minPrice",
+                "RemoveLink" => HTTP::setGetVar("MinPrice", null, null, "&"),
+            ]));
+
             $properties = $properties->filter([
                 'PricePerNight:GreaterThanOrEqual' => $minPrice
             ]);
         }
 
         if ($maxPrice = $request->getVar('MaxPrice')) {
+            $activeFilters->push(ArrayData::create([
+                "Label" => "Max. $$maxPrice",
+                "RemoveLink" => HTTP::setGetVar("MaxPrice", null, null, "&"),
+            ]));
+
             $properties = $properties->filter([
                 'PricePerNight:LessThanOrEqual' => $maxPrice
             ]);
@@ -67,8 +96,10 @@ class PropertySearchPageController extends PageController
         $paginatedProperties = PaginatedList::create($properties, $request)->setPageLength(6);
 
         $data = [
-            "Results" => $paginatedProperties
+            "Results" => $paginatedProperties,
+            "ActiveFilters" => $activeFilters
         ];
+
 
         if ($this->request->isAjax()) {
             return $this

@@ -18,18 +18,17 @@
             <div class="sidebar gray col-sm-4">
 
                 <!-- BEGIN ADVANCED SEARCH -->
-                <h2 class="section-title">Search Property</h2>
-                <%-- <% if $ActiveFilters %>
-                <div class="chzn-container-multi">
-                    <ul class="chzn-choices">
+				<h2 class="section-title">Search Property</h2>
+				<div class="chzn-container-multi">
+					<ul class="chzn-choices">
                         <% loop $ActiveFilters %>
                             <li class="search-choice"><span>$Label</span><a href="$RemoveLink" class="search-choice-close"></a></li>
                         <% end_loop %>
-                    </ul>
-                </div>
-                <% end_if %> --%>
-                $PropertySearchForm
-                <!-- END ADVANCED SEARCH -->
+
+					</ul>
+				</div>
+				$PropertySearchForm
+				<!-- END ADVANCED SEARCH -->
 
                 <!-- BEGIN LATEST NEWS -->
                 <h2 class="section-title">Latest News</h2>
